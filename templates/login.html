@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center my-5">
+    <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-11 justify-content-center align-items-center login">
+        <form action="/login" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <h2 class="mb-3"><b>Login:</b></h2>
+            {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+            <p style="color:red;">{{ message }}</p>
+            {% endfor %}
+            {% endwith %}
+            <label for="username">Username:</label>
+            <input class="form-control" name="username" type="text" placeholder="Enter Username" required autofocus>
+            <label class="mt-2" for="password">Password:</label>
+            <input class="form-control" name="password" type="password" placeholder="Enter Password" required>
+            <button type="submit" class="btn btn-primary mt-3">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
