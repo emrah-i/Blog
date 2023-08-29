@@ -2,7 +2,9 @@ from flask import redirect, render_template, request, jsonify, flash
 from functools import wraps
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from models import app, db, login_manager, Posts, Users, Comments
-from sqlalchemy import or_
+from sqlalchemy import or_, create_engine
+from sqlalchemy.ext.declarative import declarative_base  
+from sqlalchemy.orm import sessionmaker  
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -12,11 +14,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 csrf = CSRFProtect(app)
 
-with app.app_context():
-    db.create_all()
+DATABASE_URL = os.environ['DATABASE_URL']  
+engine = create_engine(DATABASE_URL)  
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)  
+Base = declarative_base()
+
+Base.metadata.create_all(bind=engine)
 
 @app.template_filter('current_year')
 def current_year_filter(value):
@@ -445,3 +451,6 @@ def password():
         return jsonify({"success": "Post was successfully deleted"}), 200
     else:
         return render_template('password.html', user=user)
+
+if __name__ == '__main__':  
+    app.run(host='0.0.0.0')
