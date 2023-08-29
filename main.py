@@ -118,17 +118,17 @@ def register():
             flash('Your passwords must not be from the list.')
             return redirect('/register')
         
-        for i in password:
-            if password[i].isupper():
+        for char in password:
+            if char.isupper():
                 break
-            elif password[i] == password[-1]:
+            elif char == password[-1]:
                 flash('Your passwords must contain an uppercase letter.')
                 return redirect('/register')
 
         for i in password:
-            if password[i] in password_symbols:
+            if char in password_symbols:
                 break
-            elif password[i] == password[-1]:
+            elif char == password[-1]:
                 flash('Your passwords must contain a symbol.')
                 return redirect('/register')
 
