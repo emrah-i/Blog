@@ -10,9 +10,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 import smtplib
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 csrf = CSRFProtect(app)
