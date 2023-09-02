@@ -5,7 +5,8 @@
 <br/>
 
 <h2><b>About This Project:</b></h2>
-<p>This app was crafted personal use in future pursuits.</p>
+<p>This blog web app was developed for my personal use, but since I haven't had the opportunity to create blog posts yet, the app is currently populated with fictitious posts. These fabricated posts consist of randomly generated titles, content, and images. They serve as a means for users to fully engage with all the features of the application. Feel free to explore the webpage as a demo user.</p>
+<p>Prior to constructing this app, I reviewed a large array of blogs to find the features and designs that make a blog stand out. I wanted to ensure the front end was a balance between simplicity and attractiveness. Additionally, it needed to be distinct from a social media application. Many developers often succumb to the temptation of adding countless features, needlessly complicating what should be a straightforward app. To avoid this pitfall, I approached this project with a well-defined design and specific objectives in mind. These practices enabled me to develop a polished web application.</p>
 <h3>Full Stack:</h3>
 <p>
 Every single tool presented below found it's utility at various stages during the development process. 
