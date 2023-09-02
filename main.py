@@ -340,10 +340,6 @@ def delete(postid):
 
     return jsonify({"success": "Post was successfully deleted"}), 200
 
-@app.route('/about', methods=['GET'])
-def about():
-    return render_template('about.html')
-
 @app.route('/contact', methods=['POST', 'GET'])
 def contact():
 
