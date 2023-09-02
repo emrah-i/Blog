@@ -70,7 +70,7 @@ Initially, the database was implemented through <b>SQLite</b>, but its limitatio
 Nonetheless, in the project's initial iteration, <i>SQLite</i>, in tandem with the Python Faker module, facilitated the population of the database.
 Eventually, when the decision was made to host the webpage online, <b>PostgreSQL</b> was utilized to host the database. 
 </p>
-<h3>Installation</h3>
+<h3>Installation and Deployment:</h3>
 <p>If you would like to take this project and copy it for personal use, you can following the following guide:
     <ol>
         <li>Fork the project</li>
