@@ -1,7 +1,7 @@
 # Emrah's Blog
 
 <br/>
-<br/>
+<img src="Blog Gif.gif" alt="gif">
 <br/>
 
 <h2><b>About This Project:</b></h2>
