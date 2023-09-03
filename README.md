@@ -1,5 +1,7 @@
 # Emrah's Blog
 
+<a href="https://eblog.applikuapp.com">eblog.applikuapp.com</a>
+
 <br/>
 <img src="Blog Gif.gif" alt="gif">
 <br/>
