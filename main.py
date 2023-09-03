@@ -11,10 +11,10 @@ from flask_login import login_user, login_required, logout_user, current_user
 import smtplib
 import os
 
-app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 csrf = CSRFProtect(app)
 
-DATABASE_URL = os.environ['DATABASE_URL']  
+DATABASE_URL = os.environ.get("DATABASE_URL")
 engine = create_engine(DATABASE_URL)  
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)  
 Base = declarative_base()
