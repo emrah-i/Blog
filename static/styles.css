@@ -165,6 +165,29 @@ button.navbar-toggler:focus {
     margin-bottom: 40%;
 }
 
+#popup {
+    position: fixed;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1rem 1rem #00000020;
+    z-index: 3;
+    color: white;
+    background-color: #2a587fef;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: fit-content;
+    font-size: 1.5rem;
+    left: 50%;
+    top: 25%;
+    transform: translateX(-50%);
+    transition: all .3 ease-in-out 1s;
+}
+
+#popup_text {
+    margin: 0;
+}
+
 @media (min-width: 992px) {
     .btn {
         padding: 6px 12px;

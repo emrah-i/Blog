@@ -1,4 +1,5 @@
 from flask import redirect, render_template, request, jsonify, flash
+import requests
 from functools import wraps
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from models import app, db, login_manager, Posts, Users, Comments
@@ -343,21 +344,38 @@ def delete(postid):
 @app.route('/contact', methods=['POST', 'GET'])
 def contact():
 
-    my_email = os.environ.get('SMTP_EMAIL')
-    password = os.environ.get('SMTP_PASSWORD')
-
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        body = request.form.get('body')
-        connection = smtplib.SMTP("smtp.gmail.com")
-        connection.starttls()
-        connection.login(my_email, password)
-        connection.sendmail(from_addr=my_email, to_addrs=my_email, 
-                            msg=f'Subject: Blog Contact!\n\nA user wanted to contact you saying the following: \n{body}\n Their name is {name} and they can be reached at {email}.')
-        connection.close()
-        flash('Email was successfully sent.')
-        return redirect('/contact')
+        
+        recaptchaResponse = request.form.get('g-recaptcha-response')
+        recaptchaSecretKey = os.environ.get('GR_SECRET_KEY')
+
+        data = {
+            "secret": recaptchaSecretKey,
+            "response": recaptchaResponse
+        }
+
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        res_data = response.json()
+
+        print(res_data)
+
+        if res_data['success']:
+            my_email = os.environ.get('SMTP_EMAIL')
+            password = os.environ.get('SMTP_PASSWORD')
+            name = request.form.get('name')
+            email = request.form.get('email')
+            body = request.form.get('body')
+            connection = smtplib.SMTP("smtp.gmail.com")
+            connection.starttls()
+            connection.login(my_email, password)
+            connection.sendmail(from_addr=my_email, to_addrs=my_email, 
+                                msg=f'Subject: Blog Contact!\n\nA user wanted to contact you saying the following: \n{body}\n Their name is {name} and they can be reached at {email}.')
+            connection.close()
+            flash('<p style="color:green;">Email was successfully sent!</p>')
+            return redirect('/contact')
+        else:
+            flash('<p style="color:red;">Invalid reCAPTCHA</p>')
+            return redirect('/contact')
     else:
         return render_template('contact.html')
 
