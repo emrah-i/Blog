@@ -362,6 +362,7 @@ def contact():
         print(res_data)
 
         if res_data['success']:
+            print('trying')
             my_email = os.environ.get('SMTP_EMAIL')
             password = os.environ.get('SMTP_PASSWORD')
             name = request.form.get('name')
