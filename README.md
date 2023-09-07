@@ -1,9 +1,8 @@
-# Emrah's Blog
-
-<a href="https://eblog.applikuapp.com">eblog.applikuapp.com</a>
+<h1 align="center">Emrah's Blog</h1>
+<h3 align="center"><a href="https://eblog.applikuapp.com">eblog.applikuapp.com</a></h3>
 
 <br/>
-<img src="Blog Gif.gif" alt="gif">
+
 <br/>
 
 <h2><b>About This Project:</b></h2>
