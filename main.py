@@ -369,7 +369,7 @@ def contact():
             email = request.form.get('email')
             body = request.form.get('body')
             print('almost there')
-            connection = smtplib.SMTP("smtp.gmail.com")
+            connection = smtplib.SMTP("smtp.gmail.com", 587)
             connection.starttls()
             connection.login(my_email, password)
             connection.sendmail(from_addr=my_email, to_addrs=my_email, 
