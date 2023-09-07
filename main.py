@@ -368,12 +368,14 @@ def contact():
             name = request.form.get('name')
             email = request.form.get('email')
             body = request.form.get('body')
+            print('almost there')
             connection = smtplib.SMTP("smtp.gmail.com")
             connection.starttls()
             connection.login(my_email, password)
             connection.sendmail(from_addr=my_email, to_addrs=my_email, 
                                 msg=f'Subject: Blog Contact!\n\nA user wanted to contact you saying the following: \n{body}\n Their name is {name} and they can be reached at {email}.')
             connection.close()
+            print('finished')
             flash('<p style="color:green;">Email was successfully sent!</p>')
             return redirect('/contact')
         else:
