@@ -354,28 +354,21 @@ def contact():
             "response": recaptchaResponse
         }
 
-        print(data)
-
         response = requests.post('https://www.google.com/recaptcha/api/siteverify', params=data)
         res_data = response.json()
 
-        print(res_data)
-
         if res_data['success']:
-            print('trying')
             my_email = os.environ.get('SMTP_EMAIL')
             password = os.environ.get('SMTP_PASSWORD')
             name = request.form.get('name')
             email = request.form.get('email')
             body = request.form.get('body')
-            print('almost there')
             connection = smtplib.SMTP("smtp.gmail.com", 587)
             connection.starttls()
             connection.login(my_email, password)
             connection.sendmail(from_addr=my_email, to_addrs=my_email, 
                                 msg=f'Subject: Blog Contact!\n\nA user wanted to contact you saying the following: \n{body}\n Their name is {name} and they can be reached at {email}.')
             connection.close()
-            print('finished')
             flash('<p style="color:green;">Email was successfully sent!</p>')
             return redirect('/contact')
         else:
