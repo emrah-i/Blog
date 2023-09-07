@@ -357,7 +357,7 @@ def contact():
         response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
         res_data = response.json()
 
-        if res_data['success']:
+        if res_data['success'] == True:
             my_email = os.environ.get('SMTP_EMAIL')
             password = os.environ.get('SMTP_PASSWORD')
             name = request.form.get('name')
