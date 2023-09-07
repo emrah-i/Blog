@@ -1,10 +1,5 @@
-# Emrah's Blog
-
-<a href="https://eblog.applikuapp.com">eblog.applikuapp.com</a>
-
-<br/>
-<img src="Blog Gif.gif" alt="gif">
-<br/>
+<h1 align="center">Emrah's Blog</h1>
+<h3 align="center"><a href="https://eblog.applikuapp.com">eblog.applikuapp.com</a></h3>
 
 <h2><b>About This Project:</b></h2>
 <p>This blog web app was developed for my personal use, but since I haven't had the opportunity to create blog posts yet, the app is currently populated with fictitious posts. These fabricated posts consist of randomly generated titles, content, and images. They serve as a means for users to fully engage with all the features of the application. Feel free to explore the webpage as a demo user.</p>
