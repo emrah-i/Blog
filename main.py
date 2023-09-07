@@ -354,10 +354,14 @@ def contact():
             "response": recaptchaResponse
         }
 
-        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        print(data)
+
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', params=data)
         res_data = response.json()
 
-        if res_data['success'] == True:
+        print(res_data)
+
+        if res_data['success']:
             my_email = os.environ.get('SMTP_EMAIL')
             password = os.environ.get('SMTP_PASSWORD')
             name = request.form.get('name')
